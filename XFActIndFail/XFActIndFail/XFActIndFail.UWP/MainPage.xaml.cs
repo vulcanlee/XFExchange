@@ -15,22 +15,15 @@ using Windows.UI.Xaml.Navigation;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
 
-namespace PrismUnityApp3.UWP
+namespace XFActIndFail.UWP
 {
     public sealed partial class MainPage
     {
         public MainPage()
         {
             this.InitializeComponent();
-            
-            var foo = new DispatcherTimer();
-            foo.Interval = TimeSpan.FromMilliseconds(500);
-            foo.Tick += (s, e) =>
-              {
-              };
 
-
-            LoadApplication(new PrismUnityApp3.App(new UwpInitializer()));
+            LoadApplication(new XFActIndFail.App(new UwpInitializer()));
         }
     }
 

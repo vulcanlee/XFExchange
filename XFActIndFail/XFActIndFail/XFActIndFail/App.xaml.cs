@@ -1,7 +1,7 @@
 ﻿using Prism.Unity;
-using PrismUnityApp3.Views;
+using XFActIndFail.Views;
 
-namespace PrismUnityApp3
+namespace XFActIndFail
 {
     public partial class App : PrismApplication
     {
@@ -10,13 +10,15 @@ namespace PrismUnityApp3
         protected override void OnInitialized()
         {
             InitializeComponent();
-            
-            NavigationService.NavigateAsync("MainPage?title=Hello%20from%20Xamarin.Forms");
+
+            NavigationService.NavigateAsync("PrismNavigationPage/MainPage?title=Hello%20from%20Xamarin.Forms");
         }
 
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<MainPage>();
+            Container.RegisterTypeForNavigation<NewPage>();
+            Container.RegisterTypeForNavigation<PrismNavigationPage>();
         }
     }
 }
