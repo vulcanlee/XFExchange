@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFMultiEntry.Views.MainPage"
+             Title="MainPage">
+
+    <StackLayout Orientation="Vertical" HorizontalOptions="Start" VerticalOptions="FillAndExpand" >
+        <ListView BackgroundColor="White" ItemsSource="{Binding MyImportantDates}" RowHeight="70">
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout HeightRequest="70" BackgroundColor="{Binding MyColor}" >
+                            <StackLayout HeightRequest="30" Spacing="10">
+                                <Entry  HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
+                  Text="{ Binding Name}" 
+                   />
+                            </StackLayout>
+                            <StackLayout HeightRequest="30" Spacing="10">
+                                <Entry
+                  Text="{Binding Date,StringFormat='{0:MM/dd/yyyy}'}"
+                  HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--<artina:Button Style="{DynamicResource PrimaryActionButtonStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Text="Update"  Clicked="btnProfileUpdate_OnClicked"  />-->
+    </StackLayout>
+    
+</ContentPage>
