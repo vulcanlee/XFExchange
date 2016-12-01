@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFStackHidden.Views.MainPage"
+             Title="MainPage">
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="{Binding Title}" />
+        <Grid
+            RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackLayout
+                Grid.Row="0"
+                IsVisible="{Binding SLRow0}"
+                >
+                <BoxView
+                    Color="Navy"
+                    WidthRequest="100" HeightRequest="100"/>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                IsVisible="{Binding SLRow1}"
+                >
+                <BoxView
+                    Color="Red"
+                    WidthRequest="200" HeightRequest="200"/>
+            </StackLayout>
+        </Grid>
+        <Button Text="Show/Hidden Row 0" Command="{Binding ShowHiddenRow0Command}"/>
+        <Button Text="Show/Hidden Row 1" Command="{Binding ShowHiddenRow1Command}"/>
+        <Label Text="{Binding Title}" />
+    </StackLayout>
+</ContentPage>
