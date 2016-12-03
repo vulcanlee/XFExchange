@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFRadialMenu.Views.MainPage"
+             Title="MainPage">
+    <Grid
+        HorizontalOptions="Fill" VerticalOptions="Fill"
+        Margin="0,0,0,0"
+        >
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="{Binding Title}" />
+            <Entry Placeholder="Account" />
+            <Entry Placeholder="Password" />
+            <Button Text="Login" />
+        </StackLayout>
+
+        <Grid
+            HorizontalOptions="End" VerticalOptions="Center"
+            RowSpacing="0" ColumnSpacing="0"
+            >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <BoxView
+                IsVisible="{Binding ShowMenu}"
+                Grid.RowSpan="3" Grid.ColumnSpan="3"
+                Color="Pink"
+                 />
+            
+            <Button 
+                Grid.Row="1" Grid.Column="1"
+                BackgroundColor="Navy"
+                TextColor="White"
+                Text="Menu" Command="{Binding MenuCommand}" />
+
+            <Button 
+                IsVisible="{Binding ShowMenu}"
+                Grid.Row="0" Grid.Column="0"
+                Text="Sub-Menu1" Command="{Binding SubMenuCommand}" CommandParameter="Sub-Menu1" />
+            <Button 
+                IsVisible="{Binding ShowMenu}"
+                Grid.Row="0" Grid.Column="1"
+                Text="Sub-Menu2" Command="{Binding SubMenuCommand}" CommandParameter="Sub-Menu2"/>
+            <Button 
+                IsVisible="{Binding ShowMenu}"
+                Grid.Row="0" Grid.Column="2"
+                Text="Sub-Menu3" Command="{Binding SubMenuCommand}" CommandParameter="Sub-Menu3"/>
+            <Button 
+                IsVisible="{Binding ShowMenu}"
+                Grid.Row="1" Grid.Column="0"
+                Text="Sub-Menu4" Command="{Binding SubMenuCommand}" CommandParameter="Sub-Menu4"/>
+            <Button 
+                IsVisible="{Binding ShowMenu}"
+                Grid.Row="1" Grid.Column="2"
+                Text="Sub-Menu5" Command="{Binding SubMenuCommand}" CommandParameter="Sub-Menu5"/>
+            <Button 
+                IsVisible="{Binding ShowMenu}"
+                Grid.Row="2" Grid.Column="0"
+                Text="Sub-Menu6" Command="{Binding SubMenuCommand}" CommandParameter="Sub-Menu6"/>
+            <Button 
+                IsVisible="{Binding ShowMenu}"
+                Grid.Row="2" Grid.Column="1"
+                Text="Sub-Menu7" Command="{Binding SubMenuCommand}" CommandParameter="Sub-Menu7"/>
+            <Button 
+                IsVisible="{Binding ShowMenu}"
+                Grid.Row="2" Grid.Column="2"
+                Text="Sub-Menu8" Command="{Binding SubMenuCommand}" CommandParameter="Sub-Menu8"/>
+        </Grid>
+    </Grid>
+</ContentPage>
