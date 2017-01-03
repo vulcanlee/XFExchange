@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFMqtt.Views.MainPage"
+             Title="MainPage">
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="{Binding Title}" />
+        <Label Text="UserID" />
+        <Entry Text="{Binding UserID}" />
+        <Label Text="Sending UserID" />
+        <Entry Text="{Binding SendingUserID}" />
+        <Label Text="Message" />
+        <Entry Text="{Binding SendingMessage}" />
+        <Button Text="Send" Command="{Binding SendingCommand}" />
+    </StackLayout>
+</ContentPage>
