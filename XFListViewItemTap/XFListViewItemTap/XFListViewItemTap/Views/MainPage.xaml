@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFListViewItemTap.Views.MainPage"
+             Title="MainPage"
+             x:Name="ThisPage"
+             >
+    
+    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <Label Text="{Binding Title}" />
+        <Label Text="請點選有顏色的色塊" />
+
+        <ListView
+            HasUnevenRows="True"
+            ItemsSource="{Binding DataItemList}"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            >
+                            <BoxView
+                                WidthRequest="100" HeightRequest="60"
+                                Color="Green"
+                                >
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.BoxViewTapCommand, Source={x:Reference ThisPage}}" CommandParameter="{Binding}" />
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                            <Label
+                                HorizontalOptions="Start" VerticalOptions="Center"
+                                FontSize="Large"
+                                TextColor="Green"
+                                Text="{Binding DataVale}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>
