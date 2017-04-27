@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  prism:ViewModelLocator.AutowireViewModel="True"
+                  x:Class="PrismUnityApp6.Views.MDPage">
+
+    <MasterDetailPage.Master>
+        <ContentPage
+            Title="Menu">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="350"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--最上方的使用者登入資訊-->
+                <Grid
+                    Grid.Row="0">
+                    <BoxView
+                        Color="Green"/>
+                    <Label Text="使用者：王小明"
+                           HorizontalOptions="Start" VerticalOptions="Start"
+                           Margin="10,5,0,0"
+                           TextColor="White"
+                           />
+                    <BoxView
+                        Color="Yellow"
+                        HorizontalOptions="End" VerticalOptions="Start"
+                        Margin="0,15,10,0"
+                        />
+                    <Label Text="Xamarin.Forms"
+                           HorizontalOptions="Start" VerticalOptions="End"
+                           />
+
+                </Grid>
+
+                <!--下方可以使用的功能選項-->
+                <ScrollView
+                    Grid.Row="1"
+                    >
+                    <StackLayout
+                        Orientation="Vertical"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        >
+                        <Button Text="P1" Command="{Binding P1Command}"/>
+                        <Button Text="P2" Command="{Binding P2Command}"/>
+                        <Label Text="P1">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding P1Command}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Text="P2">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding P2Command}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Button Text="Logout" Command="{Binding LogoutCommand}"/>
+                    </StackLayout>
+
+                </ScrollView>
+                
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+  
+</MasterDetailPage>
