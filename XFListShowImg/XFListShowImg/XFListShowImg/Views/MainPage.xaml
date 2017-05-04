@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="XFListShowImg.Views.MainPage"
+             Title="MainPage">
+
+    <Grid
+        RowSpacing="0" ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button 
+            Grid.Row="0" Grid.Column="0"
+            Text="Mode1" Command="{Binding Model1Command}"/>
+        <Button 
+            Grid.Row="0" Grid.Column="1"
+            Text="Mode2" Command="{Binding Model2Command}"/>
+
+        <ListView
+            Grid.Row="1" Grid.Column="0"
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding MyItems}"
+            HasUnevenRows="True"
+            >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label 
+                                Grid.Row="0" Grid.Column="0"
+                                Text="{Binding Number}"/>
+                            <BoxView
+                                Grid.Row="1" Grid.Column="0"
+                                Color="{Binding BoxColor}"/>
+                            <Image
+                                Grid.Row="0" Grid.Column="1"
+                                Grid.RowSpan="2"
+                                HorizontalOptions="Fill" VerticalOptions="Fill"
+                                Aspect="AspectFill"
+                                Source="{Binding ImageUrl}"
+                                IsVisible="{Binding ShowImage}"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
