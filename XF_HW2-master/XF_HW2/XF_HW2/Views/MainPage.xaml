@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XF_HW2.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    
+    xmlns:converter="clr-namespace:XF_HW2.Converters"
+    
+    Title="購物清單"
+    prism:ViewModelLocator.AutowireViewModel="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:NullableToString x:Key="NullableToString"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <BoxView
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            Color="#848484" />
+
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="20,0,0,0"
+            FontSize="16"
+            HorizontalOptions="Start"
+            Text="{Binding TotalPrice}"
+            TextColor="White"
+            VerticalOptions="Center" />
+
+        <Button
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="0,0,20,0"
+            Command="{Binding TotalPriceCommand}"
+            HeightRequest="40"
+            HorizontalOptions="End"
+            Text="計算"
+            VerticalOptions="Center"
+            WidthRequest="120" />
+
+        <ListView
+            Grid.Row="1"
+            Grid.Column="0"
+            ItemsSource="{Binding ShoppingItemList}"
+            RowHeight="120">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical">
+                            <Label
+                                FontSize="20"
+                                Text="{Binding Name}"
+                                TextColor="Black" />
+                            <Label
+                                FontSize="18"
+                                Text="{Binding Price, StringFormat='{0:#,##0.#}元'}"
+                                TextColor="Pink" />
+                            <Grid
+                                ColumnSpacing="0"
+                                HeightRequest="50"
+                                RowSpacing="0">
+                                <Label
+                                    FontSize="18"
+                                    HorizontalOptions="Center"
+                                    Text="數量"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    WidthRequest="100" />
+                                <Entry
+                                    Margin="0,0,20,0"
+                                    BackgroundColor="#A9F5BC"
+                                    FontSize="18"
+                                    HeightRequest="50"
+                                    HorizontalOptions="End"
+                                    HorizontalTextAlignment="End"
+                                    Text="{Binding Qty, Converter={StaticResource NullableToString}}"
+                                    TextColor="Black"
+                                    VerticalOptions="Center"
+                                    WidthRequest="150" />
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
